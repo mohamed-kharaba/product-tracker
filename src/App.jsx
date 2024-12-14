@@ -3,7 +3,7 @@ import ExpenseList from "./components/ExpenseList";
 import ExpenseFilter from "./components/ExpenseFilter";
 import ExpenseForm from "./components/ExpenseForm";
 
-export const categories = ["Groceries", "Utilities", "Entertainment"];
+import categories from "./categories";
 
 function App() {
     const [selectCategory, setSelectCategory] = useState("");
@@ -20,7 +20,7 @@ function App() {
     return (
         <>
             <div className="mb-5">
-                <ExpenseForm />
+                <ExpenseForm onSubmit={(expense) => setExpenses([...expenses, { ...expense, id: expense.length + 1 }])} />
             </div>
             <div className="mb-3">
                 <ExpenseFilter onSelectCategory={(category) => setSelectCategory(category)} />
